@@ -1,4 +1,4 @@
-﻿using BepInEx.Configuration;
+using BepInEx.Configuration;
 using UnityEngine;
 
 namespace DGLabPunish

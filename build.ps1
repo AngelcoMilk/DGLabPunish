@@ -1,4 +1,4 @@
-﻿param(
+param(
     [string]$Configuration = "Debug",
     [string]$GameDir = "D:\SteamLibrary\steamapps\common\REPO",
     [string]$R2Profile = "$env:APPDATA\r2modmanPlus-local\REPO\profiles\REPO",
