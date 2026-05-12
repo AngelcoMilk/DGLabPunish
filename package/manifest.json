@@ -1,6 +1,6 @@
-{
+﻿{
   "name": "DGLabPunish",
-  "version_number": "0.6.0",
+  "version_number": "0.6.1",
   "website_url": "https://thunderstore.io/c/repo/p/AngelcoMilk/DGLabPunish/",
   "description": "Connect DG-LAB Coyote 3.0 in R.E.P.O.; supports hit/death punishment, continuous waveforms, footstep/action triggers, and App Socket control panel.",
   "dependencies": [

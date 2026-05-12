@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$Configuration = "Debug",
     [string]$GameDir = "D:\SteamLibrary\steamapps\common\REPO",
     [string]$R2Profile = "$env:APPDATA\r2modmanPlus-local\REPO\profiles\REPO",
@@ -9,7 +9,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $modName = "DGLabPunish"
-$modVersion = "0.6.0"
+$modVersion = "0.6.1"
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $src = Join-Path $root "src\$modName"

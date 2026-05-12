@@ -1,4 +1,4 @@
-# DGLabPunish v0.6.0
+﻿# DGLabPunish v0.6.1
 
 适用于在 R.E.P.O. 游戏中连接 DG-LAB 郊狼 3.0 主机的惩罚型 Socket 模组，支持受击、死亡惩罚、左右脚步、奔跑、跳跃、落地、滑行等事件触发连续波形和强度变化。
 
@@ -121,7 +121,7 @@ BepInEx/config/com.angelcomilk.repo.dglabpunish.cfg
 
 ---
 
-# DGLabPunish v0.6.0
+# DGLabPunish v0.6.1
 
 A R.E.P.O. DG-LAB Coyote 3.0 punishment Socket mod for in-game Coyote connection, hit/death punishment, footstep/action triggers, continuous waveforms, and configurable strength profiles.
 

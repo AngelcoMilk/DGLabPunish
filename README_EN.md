@@ -1,4 +1,4 @@
-# DGLabPunish v0.6.0
+﻿# DGLabPunish v0.6.1
 
 DGLabPunish is a R.E.P.O. BepInEx mod for connecting a DG-LAB Coyote 3.0 device in game. It supports hit and death punishment, continuous waveforms, left/right footstep effects, sprinting, jumping, landing, sliding, strength controls, and an in-game App Socket control panel.
 

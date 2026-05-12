@@ -10,7 +10,7 @@ namespace DGLabPunish
     {
         public const string PluginGuid = "com.angelcomilk.repo.dglabpunish";
         public const string PluginName = "DGLabPunish";
-        public const string PluginVersion = "0.6.0";
+        public const string PluginVersion = "0.6.1";
 
         internal static Plugin Instance;
         internal static ManualLogSource Log;
