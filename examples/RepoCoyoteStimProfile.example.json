@@ -1,0 +1,70 @@
+{
+  "name": "ExampleImportedPunish",
+  "version": "1",
+  "maxWaveIntensity": 80,
+  "continuous": {
+    "sendIntervalMs": 70,
+    "lookaheadMs": 100,
+    "fadeOutMs": 450,
+    "maxEventDurationMs": 4500,
+    "maxQueuedPulseItems": 50,
+    "minimumChannelStrength": 30,
+    "walkBaseIntensity": 10,
+    "walkBaseFrequency": 25,
+    "walkBaseShape": "Tremor",
+    "walkStepBumpIntensity": 18,
+    "walkStepBumpDurationMs": 170,
+    "runBaseIntensity": 18,
+    "runBaseFrequency": 280,
+    "runBaseShape": "SawBurst",
+    "runStepBumpIntensity": 26,
+    "runStepBumpDurationMs": 120,
+    "slideBaseIntensity": 20,
+    "slideBaseFrequency": 260,
+    "hurtMinIntensity": 30,
+    "hurtMaxIntensity": 72,
+    "hurtDurationMinMs": 1800,
+    "hurtDurationMaxMs": 4200,
+    "hurtFrequency": 60,
+    "deathIntensity": 76,
+    "deathDurationMs": 4500,
+    "deathFrequency": 150
+  },
+  "waves": [
+    {
+      "name": "Imported.HexTap",
+      "displayName": "导入 HEX 短波",
+      "type": "hex",
+      "shape": "Raw",
+      "channel": "Both",
+      "hex": [
+        "0A0A0A0A64646464",
+        "1414141450505050",
+        "2828282830303030"
+      ]
+    },
+    {
+      "name": "Imported.LongPunish",
+      "displayName": "导入惩罚长波",
+      "type": "envelope",
+      "shape": "RampUpHoldDown",
+      "channel": "Both",
+      "frequency": 60,
+      "minStrength": 30,
+      "maxStrength": 72,
+      "durationMs": 4200,
+      "phase": 0.0
+    }
+  ],
+  "events": [
+    {
+      "eventName": "Hurt",
+      "waveName": "Imported.LongPunish",
+      "channelMode": "Both",
+      "strengthMultiplier": 1.0,
+      "clearBeforeSend": false,
+      "continuousState": true,
+      "note": "受击使用两秒左右高强度包络。"
+    }
+  ]
+}

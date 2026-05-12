@@ -1,1 +1,15 @@
-# RepoCoyoteStim
+dist/
+dist_package/
+*.pdb
+*.user
+*.suo
+*.tmp
+*.log
+
+# Local dependency/game files should not be committed.
+BepInEx/
+REPO_Data/
+Assembly-CSharp.dll
+
+# User-local generated profiles and exports.
+BepInEx/config/RepoCoyoteStim/

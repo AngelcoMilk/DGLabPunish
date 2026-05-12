@@ -1,0 +1,13 @@
+# RepoCoyoteStim .pulse 示例
+# 每行可以写 frequency strength，表示一个 25ms 帧。
+60 10
+60 18
+60 30
+60 40
+60 35
+60 24
+60 16
+60 10
+
+# 也可以混用 16 位 DG-LAB HEX，每条 HEX 表示 100ms。
+0A0A0A0A10182028

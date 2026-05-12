@@ -1,0 +1,9 @@
+{
+  "name": "RepoCoyoteStim",
+  "version_number": "0.5.8",
+  "website_url": "https://github.com/AngelcoMilk/RepoCoyoteStim",
+  "description": "R.E.P.O. 郊狼 3.0 App Socket 接入，带连续波形、游戏内面板、波形预设和事件触发。",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2305"
+  ]
+}
