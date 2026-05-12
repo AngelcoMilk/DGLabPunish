@@ -1,7 +1,7 @@
-using BepInEx.Configuration;
+﻿using BepInEx.Configuration;
 using UnityEngine;
 
-namespace RepoCoyoteStim
+namespace DGLabPunish
 {
     internal enum SocketConnectionMode
     {
@@ -179,7 +179,7 @@ namespace RepoCoyoteStim
             Armed = config.Bind("Safety", "Enabled", false, "为 false 时，游戏事件不会触发波形。可在面板里点击“启用触发”。");
             AutoArmOnBind = config.Bind("Safety", "AutoArmOnBind", true, "绑定 DG-LAB App 后自动启用游戏事件触发。关闭后需手动点击“启用触发”。");
             AllowStrengthControl = config.Bind("Safety", "AllowStrengthControl", false, "兼容旧配置：开启后等同于 EventScaled 自动调强。");
-            AutoStrengthMode = config.Bind("Safety", "AutoStrengthMode", RepoCoyoteStim.AutoStrengthMode.EventScaled, "Off=不调强；MinimumOnly=只补到最低可感强度；EventScaled=按事件强度设置通道强度。");
+            AutoStrengthMode = config.Bind("Safety", "AutoStrengthMode", DGLabPunish.AutoStrengthMode.EventScaled, "Off=不调强；MinimumOnly=只补到最低可感强度；EventScaled=按事件强度设置通道强度。");
             MinimumChannelStrength = config.Bind("Safety", "MinimumChannelStrength", 30, "MinimumOnly 模式下 A/B 通道会被补到的最低强度。");
             MaxWaveIntensity = config.Bind("Safety", "MaxWaveIntensity", 60, "本 Mod 使用的波形强度上限。DG-LAB 波形强度范围为 0-100。");
             MaxEventDurationMs = config.Bind("Safety", "MaxEventDurationMs", 4000, "单次事件波形最长持续时间，单位毫秒。");
@@ -357,9 +357,9 @@ namespace RepoCoyoteStim
                 FootstepDurationMs.Value = 250;
             }
 
-            if (AutoStrengthMode.Value == RepoCoyoteStim.AutoStrengthMode.MinimumOnly && AllowStrengthControl.Value)
+            if (AutoStrengthMode.Value == DGLabPunish.AutoStrengthMode.MinimumOnly && AllowStrengthControl.Value)
             {
-                AutoStrengthMode.Value = RepoCoyoteStim.AutoStrengthMode.EventScaled;
+                AutoStrengthMode.Value = DGLabPunish.AutoStrengthMode.EventScaled;
             }
         }
     }

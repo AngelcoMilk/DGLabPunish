@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Text;
 using BepInEx;
 using Newtonsoft.Json;
 
-namespace RepoCoyoteStim
+namespace DGLabPunish
 {
     internal sealed class StimProfile
     {
@@ -83,7 +83,7 @@ namespace RepoCoyoteStim
 
         internal static string ProfilesDirectory
         {
-            get { return Path.Combine(Paths.ConfigPath, "RepoCoyoteStim", "profiles"); }
+            get { return Path.Combine(Paths.ConfigPath, "DGLabPunish", "profiles"); }
         }
 
         internal static void RefreshProfiles()
@@ -169,7 +169,7 @@ namespace RepoCoyoteStim
         {
             EnsureProfilesDirectory();
             StimProfile profile = CaptureCurrentProfile();
-            string fileName = "RepoCoyoteStimProfile-export-" + DateTime.Now.ToString("yyyyMMdd-HHmmss", CultureInfo.InvariantCulture) + ".json";
+            string fileName = "DGLabPunishProfile-export-" + DateTime.Now.ToString("yyyyMMdd-HHmmss", CultureInfo.InvariantCulture) + ".json";
             string path = Path.Combine(ProfilesDirectory, fileName);
             File.WriteAllText(path, JsonConvert.SerializeObject(profile, Formatting.Indented), Encoding.UTF8);
             LastMessage = "已导出：" + path;

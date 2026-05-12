@@ -1,7 +1,7 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 
-namespace RepoCoyoteStim
+namespace DGLabPunish
 {
     internal static class RepoGuards
     {

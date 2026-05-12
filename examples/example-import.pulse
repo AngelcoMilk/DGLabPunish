@@ -1,6 +1,5 @@
-# RepoCoyoteStim .pulse 示例
-# 每行可以写 frequency strength，表示一个 25ms 帧。
-60 10
+﻿# DGLabPunish .pulse 绀轰緥
+# 姣忚鍙互鍐?frequency strength锛岃〃绀轰竴涓?25ms 甯с€?60 10
 60 18
 60 30
 60 40
@@ -9,5 +8,5 @@
 60 16
 60 10
 
-# 也可以混用 16 位 DG-LAB HEX，每条 HEX 表示 100ms。
-0A0A0A0A10182028
+# 涔熷彲浠ユ贩鐢?16 浣?DG-LAB HEX锛屾瘡鏉?HEX 琛ㄧず 100ms銆?0A0A0A0A10182028
+

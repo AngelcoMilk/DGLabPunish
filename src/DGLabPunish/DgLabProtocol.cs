@@ -1,6 +1,6 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace RepoCoyoteStim
+namespace DGLabPunish
 {
     internal sealed class DgLabMessage
     {

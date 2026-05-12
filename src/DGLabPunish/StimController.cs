@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RepoCoyoteStim
+namespace DGLabPunish
 {
     internal sealed class StimDiagnostics
     {

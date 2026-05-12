@@ -1,16 +1,16 @@
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
 
-namespace RepoCoyoteStim
+namespace DGLabPunish
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public sealed class Plugin : BaseUnityPlugin
     {
-        public const string PluginGuid = "cn.codex.repo.coyotestim";
-        public const string PluginName = "RepoCoyoteStim";
-        public const string PluginVersion = "0.5.9";
+        public const string PluginGuid = "com.angelcomilk.repo.dglabpunish";
+        public const string PluginName = "DGLabPunish";
+        public const string PluginVersion = "0.6.0";
 
         internal static Plugin Instance;
         internal static ManualLogSource Log;
@@ -52,7 +52,7 @@ namespace RepoCoyoteStim
             _harmony = new Harmony(PluginGuid);
             _harmony.PatchAll();
 
-            Logger.LogInfo("RepoCoyoteStim loaded.");
+            Logger.LogInfo("DGLabPunish loaded.");
             Logger.LogInfo("DG-LAB QR URL: " + _server.GetQrUrl());
         }
 
@@ -78,7 +78,7 @@ namespace RepoCoyoteStim
                         ModConfig.Armed.Value = true;
                         Config.Save();
                         _autoArmedForCurrentBind = true;
-                        Logger.LogInfo("RepoCoyoteStim auto-armed after DG-LAB binding.");
+                        Logger.LogInfo("DGLabPunish auto-armed after DG-LAB binding.");
                     }
                 }
                 else

@@ -1,12 +1,12 @@
-# RepoCoyoteStim v0.5.9
+# DGLabPunish v0.6.0
 
-适用于在 R.E.P.O. 游戏中连接 DG-LAB 郊狼 3.0 主机的 Socket 模组，支持受击、死亡惩罚、左右脚步、奔跑、跳跃、落地、滑行等事件触发连续波形和强度变化。
+适用于在 R.E.P.O. 游戏中连接 DG-LAB 郊狼 3.0 主机的惩罚型 Socket 模组，支持受击、死亡惩罚、左右脚步、奔跑、跳跃、落地、滑行等事件触发连续波形和强度变化。
 
 作者 / Author: **AngelcoMilk**  
-Thunderstore: https://thunderstore.io/c/repo/p/AngelcoMilk/RepoCoyoteStim/  
-GitHub 文档 / GitHub Docs: https://github.com/AngelcoMilk/RepoCoyoteStim
+Thunderstore: https://thunderstore.io/c/repo/p/AngelcoMilk/DGLabPunish/  
+GitHub 文档 / GitHub Docs: https://github.com/AngelcoMilk/DGLabPunish
 
-RepoCoyoteStim 会在游戏内启动一个 DG-LAB App Socket 控制端，让手机 DG-LAB 3.0 App 扫码连接，再由手机通过蓝牙连接郊狼 3.0 主机。电脑不需要蓝牙。
+DGLabPunish 会在游戏内启动一个 DG-LAB App Socket 控制端，让手机 DG-LAB 3.0 App 扫码连接，再由手机通过蓝牙连接郊狼 3.0 主机。电脑不需要蓝牙。
 
 ```text
 R.E.P.O. Mod -> WebSocket -> 手机 DG-LAB 3.0 App -> 手机蓝牙 -> 郊狼 3.0 主机
@@ -22,7 +22,7 @@ R.E.P.O. Mod -> WebSocket -> 手机 DG-LAB 3.0 App -> 手机蓝牙 -> 郊狼 3.0
 
 按 `P` 打开游戏内“郊狼 3.0 连接面板”。
 
-![RepoCoyoteStim 游戏内面板](docs/images/repo-coyote-panel.png)
+![DGLabPunish 游戏内面板](docs/images/repo-coyote-panel.png)
 
 面板标注：
 
@@ -58,7 +58,7 @@ R.E.P.O. Mod -> WebSocket -> 手机 DG-LAB 3.0 App -> 手机蓝牙 -> 郊狼 3.0
 - **左右脚通道**：优先使用游戏动画里的 `LeftFootDown / RightFootDown`，默认左脚 A、右脚 B。
 - **动作事件**：支持跳跃、落地、滑行、敌人近距离脚步提示等事件。
 - **波形预设**：内置舒适、标准、强惩罚、调试同步等预设。
-- **导入/导出**：支持从 `BepInEx/config/RepoCoyoteStim/profiles/` 导入/导出波形配置。
+- **导入/导出**：支持从 `BepInEx/config/DGLabPunish/profiles/` 导入/导出波形配置。
 
 ## 连接方法
 
@@ -89,7 +89,7 @@ R.E.P.O. Mod -> WebSocket -> 手机 DG-LAB 3.0 App -> 手机蓝牙 -> 郊狼 3.0
 配置文件：
 
 ```text
-BepInEx/config/cn.codex.repo.coyotestim.cfg
+BepInEx/config/com.angelcomilk.repo.dglabpunish.cfg
 ```
 
 常用配置：
@@ -106,7 +106,7 @@ BepInEx/config/cn.codex.repo.coyotestim.cfg
 ## 安装（r2modman）
 
 1. 导入 zip。
-2. 确认 DLL 路径：`BepInEx/plugins/RepoCoyoteStim/RepoCoyoteStim.dll`
+2. 确认 DLL 路径：`BepInEx/plugins/DGLabPunish/DGLabPunish.dll`
 3. 确认依赖 `BepInExPack` 已安装。
 
 ## 已知限制
@@ -119,12 +119,12 @@ BepInEx/config/cn.codex.repo.coyotestim.cfg
 
 ---
 
-# RepoCoyoteStim v0.5.9
+# DGLabPunish v0.6.0
 
-A R.E.P.O. DG-LAB Coyote 3.0 App Socket mod for in-game Coyote connection, hit/death punishment, footstep/action triggers, continuous waveforms, and configurable strength profiles.
+A R.E.P.O. DG-LAB Coyote 3.0 punishment Socket mod for in-game Coyote connection, hit/death punishment, footstep/action triggers, continuous waveforms, and configurable strength profiles.
 
 Author: **AngelcoMilk**  
-Thunderstore: https://thunderstore.io/c/repo/p/AngelcoMilk/RepoCoyoteStim/  
-GitHub Docs: https://github.com/AngelcoMilk/RepoCoyoteStim
+Thunderstore: https://thunderstore.io/c/repo/p/AngelcoMilk/DGLabPunish/  
+GitHub Docs: https://github.com/AngelcoMilk/DGLabPunish
 
 Use the `DG-LAB 3.0+` Android app from Google Play, preferably the 3.x app line. `DG-LAB 4.0` and later are currently not compatible with this Socket workflow.

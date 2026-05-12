@@ -8,8 +8,8 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$modName = "RepoCoyoteStim"
-$modVersion = "0.5.9"
+$modName = "DGLabPunish"
+$modVersion = "0.6.0"
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $src = Join-Path $root "src\$modName"

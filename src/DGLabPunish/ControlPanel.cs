@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using BepInEx.Configuration;
 using Net.Codecrete.QrCodeGenerator;
 using UnityEngine;
 
-namespace RepoCoyoteStim
+namespace DGLabPunish
 {
     internal sealed class ControlPanel
     {
@@ -637,7 +637,7 @@ namespace RepoCoyoteStim
             Section("导入/导出");
             GUILayout.Label("导入目录：");
             GUILayout.TextArea(StimProfileManager.ProfilesDirectory, GUILayout.Height(40));
-            GUILayout.Label("支持 RepoCoyoteStimProfile.json、原始 HEX JSON 数组和 .pulse 文本。第三方项目建议只导入数据，不复制代码。");
+            GUILayout.Label("支持 DGLabPunishProfile.json、原始 HEX JSON 数组和 .pulse 文本。第三方项目建议只导入数据，不复制代码。");
             GUILayout.Label("HEX 示例：type=hex，hex=[\"0A0A0A0A64646464\"]；.pulse 可每行写 16 位 HEX 或 frequency strength。");
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("刷新导入目录"))
