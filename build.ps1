@@ -141,6 +141,7 @@ Copy-Item -LiteralPath $qrDll -Destination (Join-Path $outDir "QrCodeGenerator.d
 
 Copy-Item -LiteralPath (Join-Path $root "package\manifest.json") -Destination (Join-Path $distRoot "manifest.json") -Force
 Copy-Item -LiteralPath (Join-Path $root "package\README.md") -Destination (Join-Path $distRoot "README.md") -Force
+Copy-Item -LiteralPath (Join-Path $root "package\README_EN.md") -Destination (Join-Path $distRoot "README_EN.md") -Force
 Copy-Item -LiteralPath (Join-Path $root "package\icon.png") -Destination (Join-Path $distRoot "icon.png") -Force
 
 $profilePluginDir = Join-Path $R2Profile "BepInEx\plugins\$modName"
@@ -167,6 +168,7 @@ if ($PackageToDesktop) {
     New-Item -ItemType Directory -Force -Path (Join-Path $packageStage "BepInEx\plugins\$modName") | Out-Null
     Copy-Item -LiteralPath (Join-Path $distRoot "manifest.json") -Destination (Join-Path $packageStage "manifest.json") -Force
     Copy-Item -LiteralPath (Join-Path $distRoot "README.md") -Destination (Join-Path $packageStage "README.md") -Force
+    Copy-Item -LiteralPath (Join-Path $distRoot "README_EN.md") -Destination (Join-Path $packageStage "README_EN.md") -Force
     Copy-Item -LiteralPath (Join-Path $distRoot "icon.png") -Destination (Join-Path $packageStage "icon.png") -Force
     Copy-Item -LiteralPath $pluginOut -Destination (Join-Path $packageStage "BepInEx\plugins\$modName\$modName.dll") -Force
     Copy-Item -LiteralPath $qrDll -Destination (Join-Path $packageStage "BepInEx\plugins\$modName\QrCodeGenerator.dll") -Force
@@ -174,6 +176,7 @@ if ($PackageToDesktop) {
     Compress-Archive -LiteralPath `
         (Join-Path $packageStage "manifest.json"), `
         (Join-Path $packageStage "README.md"), `
+        (Join-Path $packageStage "README_EN.md"), `
         (Join-Path $packageStage "icon.png"), `
         (Join-Path $packageStage "BepInEx") `
         -DestinationPath $desktopZip

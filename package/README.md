@@ -3,10 +3,12 @@
 适用于在 R.E.P.O. 游戏中连接 DG-LAB 郊狼 3.0 主机的惩罚型 Socket 模组，支持受击、死亡惩罚、左右脚步、奔跑、跳跃、落地、滑行等事件触发连续波形和强度变化。
 
 作者 / Author: **AngelcoMilk**  
-Thunderstore: https://thunderstore.io/c/repo/p/AngelcoMilk/DGLabPunish/  
-GitHub 文档 / GitHub Docs: https://github.com/AngelcoMilk/DGLabPunish
+项目地址 / GitHub Repository: https://github.com/AngelcoMilk/DGLabPunish  
+英文 README / English README: https://github.com/AngelcoMilk/DGLabPunish/blob/main/README_EN.md  
+Thunderstore: https://thunderstore.io/c/repo/p/AngelcoMilk/DGLabPunish/
 
 DGLabPunish 会在游戏内启动一个 DG-LAB App Socket 控制端，让手机 DG-LAB 3.0 App 扫码连接，再由手机通过蓝牙连接郊狼 3.0 主机。电脑不需要蓝牙。
+源码、更新说明和完整文档都在 GitHub 项目地址中维护。
 
 ## 游戏内面板
 
