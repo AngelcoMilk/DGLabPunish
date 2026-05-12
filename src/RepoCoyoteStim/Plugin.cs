@@ -10,7 +10,7 @@ namespace RepoCoyoteStim
     {
         public const string PluginGuid = "cn.codex.repo.coyotestim";
         public const string PluginName = "RepoCoyoteStim";
-        public const string PluginVersion = "0.5.8";
+        public const string PluginVersion = "0.5.9";
 
         internal static Plugin Instance;
         internal static ManualLogSource Log;

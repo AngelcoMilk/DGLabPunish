@@ -8,35 +8,38 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+$modName = "RepoCoyoteStim"
+$modVersion = "0.5.9"
+
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
-$src = Join-Path $root "src\RepoCoyoteStim"
-$outDir = Join-Path $root "dist\BepInEx\plugins\RepoCoyoteStim"
+$src = Join-Path $root "src\$modName"
 $distRoot = Join-Path $root "dist"
+$outDir = Join-Path $distRoot "BepInEx\plugins\$modName"
 $managed = Join-Path $GameDir "REPO_Data\Managed"
 $bepCore = Join-Path $R2Profile "BepInEx\core"
-$pluginOut = Join-Path $outDir "RepoCoyoteStim.dll"
-$desktopZip = Join-Path ([Environment]::GetFolderPath("Desktop")) "RepoCoyoteStim-0.5.8.zip"
+$pluginOut = Join-Path $outDir "$modName.dll"
+$desktopZip = Join-Path ([Environment]::GetFolderPath("Desktop")) "$modName-$modVersion.zip"
 $qrDll = Join-Path $root "lib\QrCodeGenerator.dll"
 
-if (!(Test-Path (Join-Path $managed "Assembly-CSharp.dll"))) {
-    throw "Assembly-CSharp.dll not found under $managed"
-}
-if (!(Test-Path (Join-Path $bepCore "BepInEx.dll"))) {
-    throw "BepInEx core not found under $bepCore"
-}
-if (!(Test-Path $qrDll)) {
-    throw "QrCodeGenerator.dll not found at $qrDll"
+if (!(Test-Path (Join-Path $managed "Assembly-CSharp.dll"))) { throw "Assembly-CSharp.dll not found under $managed" }
+if (!(Test-Path (Join-Path $bepCore "BepInEx.dll"))) { throw "BepInEx core not found under $bepCore" }
+if (!(Test-Path $src)) { throw "Source directory not found at $src" }
+if (!(Test-Path $qrDll)) { throw "QrCodeGenerator.dll not found at $qrDll" }
+
+if (Test-Path $distRoot) {
+    $resolvedDist = (Resolve-Path -LiteralPath $distRoot).Path
+    $resolvedRoot = (Resolve-Path -LiteralPath $root).Path
+    if (!$resolvedDist.StartsWith($resolvedRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Refusing to clean dist outside workspace: $resolvedDist"
+    }
+    Remove-Item -LiteralPath $distRoot -Recurse -Force
 }
 
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
 $csc = "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe"
-if (!(Test-Path $csc)) {
-    $csc = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe"
-}
-if (!(Test-Path $csc)) {
-    throw "No .NET Framework csc.exe found."
-}
+if (!(Test-Path $csc)) { $csc = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" }
+if (!(Test-Path $csc)) { throw "No .NET Framework csc.exe found." }
 
 $sources = Get-ChildItem -LiteralPath $src -Filter "*.cs" -Recurse | ForEach-Object { $_.FullName }
 
@@ -61,10 +64,7 @@ $refs = @(
 $refArgs = $refs | ForEach-Object { "/reference:$_" }
 
 function Test-GameHookTargets {
-    param(
-        [string]$AssemblyPath,
-        [string]$CecilPath
-    )
+    param([string]$AssemblyPath, [string]$CecilPath)
 
     if (!(Test-Path $CecilPath)) {
         Write-Warning "Mono.Cecil.dll not found; skipping Harmony hook target validation."
@@ -109,10 +109,7 @@ function Test-GameHookTargets {
         $expectedParameters = @($target.Parameters)
         $hasCompatibleSignature = $false
         foreach ($method in $methods) {
-            if ($method.Parameters.Count -ne $expectedParameters.Count) {
-                continue
-            }
-
+            if ($method.Parameters.Count -ne $expectedParameters.Count) { continue }
             $allParametersMatch = $true
             for ($i = 0; $i -lt $expectedParameters.Count; $i++) {
                 if ($method.Parameters[$i].ParameterType.FullName -ne $expectedParameters[$i]) {
@@ -120,7 +117,6 @@ function Test-GameHookTargets {
                     break
                 }
             }
-
             if ($allParametersMatch) {
                 $hasCompatibleSignature = $true
                 break
@@ -132,22 +128,14 @@ function Test-GameHookTargets {
         }
     }
 
-    if ($errors.Count -gt 0) {
-        throw "Harmony hook target validation failed:`n$($errors -join "`n")"
-    }
-
+    if ($errors.Count -gt 0) { throw "Harmony hook target validation failed:`n$($errors -join "`n")" }
     Write-Host "Validated Harmony hook targets against $AssemblyPath"
 }
 
 Test-GameHookTargets -AssemblyPath (Join-Path $managed "Assembly-CSharp.dll") -CecilPath (Join-Path $bepCore "Mono.Cecil.dll")
 
-# Unity ships Assembly-CSharp against netstandard 2.1 while Newtonsoft.Json targets
-# netstandard 2.0. The game runtime provides the 2.1 facade, so this known reference
-# unification is safe and would otherwise produce CS1701 on every build.
 & $csc /nologo /codepage:65001 /target:library /optimize+ /debug:full /nowarn:1701 /out:$pluginOut $refArgs $sources
-if ($LASTEXITCODE -ne 0) {
-    throw "csc.exe failed with exit code $LASTEXITCODE"
-}
+if ($LASTEXITCODE -ne 0) { throw "csc.exe failed with exit code $LASTEXITCODE" }
 
 Copy-Item -LiteralPath $qrDll -Destination (Join-Path $outDir "QrCodeGenerator.dll") -Force
 
@@ -155,30 +143,33 @@ Copy-Item -LiteralPath (Join-Path $root "package\manifest.json") -Destination (J
 Copy-Item -LiteralPath (Join-Path $root "package\README.md") -Destination (Join-Path $distRoot "README.md") -Force
 Copy-Item -LiteralPath (Join-Path $root "package\icon.png") -Destination (Join-Path $distRoot "icon.png") -Force
 
-$profilePluginDir = Join-Path $R2Profile "BepInEx\plugins\RepoCoyoteStim"
+$profilePluginDir = Join-Path $R2Profile "BepInEx\plugins\$modName"
 if ($InstallToProfile -and (Test-Path (Join-Path $R2Profile "BepInEx"))) {
     New-Item -ItemType Directory -Force -Path $profilePluginDir | Out-Null
-    Copy-Item -LiteralPath $pluginOut -Destination (Join-Path $profilePluginDir "RepoCoyoteStim.dll") -Force
+    Copy-Item -LiteralPath $pluginOut -Destination (Join-Path $profilePluginDir "$modName.dll") -Force
     Copy-Item -LiteralPath $qrDll -Destination (Join-Path $profilePluginDir "QrCodeGenerator.dll") -Force
     Write-Host "Installed to $profilePluginDir"
 }
 
 if ($PackageToDesktop) {
-    if (Test-Path $desktopZip) {
-        Remove-Item -LiteralPath $desktopZip -Force
-    }
+    if (Test-Path $desktopZip) { Remove-Item -LiteralPath $desktopZip -Force }
 
     $packageStage = Join-Path $root "dist_package"
     if (Test-Path $packageStage) {
+        $resolvedStage = (Resolve-Path -LiteralPath $packageStage).Path
+        $resolvedRoot = (Resolve-Path -LiteralPath $root).Path
+        if (!$resolvedStage.StartsWith($resolvedRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+            throw "Refusing to clean dist_package outside workspace: $resolvedStage"
+        }
         Remove-Item -LiteralPath $packageStage -Recurse -Force
     }
 
-    New-Item -ItemType Directory -Force -Path (Join-Path $packageStage "BepInEx\plugins\RepoCoyoteStim") | Out-Null
+    New-Item -ItemType Directory -Force -Path (Join-Path $packageStage "BepInEx\plugins\$modName") | Out-Null
     Copy-Item -LiteralPath (Join-Path $distRoot "manifest.json") -Destination (Join-Path $packageStage "manifest.json") -Force
     Copy-Item -LiteralPath (Join-Path $distRoot "README.md") -Destination (Join-Path $packageStage "README.md") -Force
     Copy-Item -LiteralPath (Join-Path $distRoot "icon.png") -Destination (Join-Path $packageStage "icon.png") -Force
-    Copy-Item -LiteralPath $pluginOut -Destination (Join-Path $packageStage "BepInEx\plugins\RepoCoyoteStim\RepoCoyoteStim.dll") -Force
-    Copy-Item -LiteralPath $qrDll -Destination (Join-Path $packageStage "BepInEx\plugins\RepoCoyoteStim\QrCodeGenerator.dll") -Force
+    Copy-Item -LiteralPath $pluginOut -Destination (Join-Path $packageStage "BepInEx\plugins\$modName\$modName.dll") -Force
+    Copy-Item -LiteralPath $qrDll -Destination (Join-Path $packageStage "BepInEx\plugins\$modName\QrCodeGenerator.dll") -Force
 
     Compress-Archive -LiteralPath `
         (Join-Path $packageStage "manifest.json"), `

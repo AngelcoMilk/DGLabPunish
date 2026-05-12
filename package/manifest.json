@@ -1,9 +1,10 @@
 {
   "name": "RepoCoyoteStim",
-  "version_number": "0.5.8",
-  "website_url": "https://github.com/AngelcoMilk/RepoCoyoteStim",
-  "description": "R.E.P.O. 郊狼 3.0 App Socket 接入，带连续波形、游戏内面板、波形预设和事件触发。",
+  "version_number": "0.5.9",
+  "website_url": "https://thunderstore.io/c/repo/p/AngelcoMilk/RepoCoyoteStim/",
+  "description": "Connect DG-LAB Coyote 3.0 in R.E.P.O.; supports hit/death punishment, continuous waveforms, footstep/action triggers, and App Socket control panel.",
   "dependencies": [
     "BepInEx-BepInExPack-5.4.2305"
-  ]
+  ],
+  "author": "AngelcoMilk"
 }
